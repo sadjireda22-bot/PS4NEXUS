@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030711">
+<title>PS4NEXUS | GoldHEN Host</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #030711;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Background */
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 40%, #06234b 0%, #030711 60%, #000 100%);
+}
+
+.background::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(45deg, transparent 49%, #087cff18 50%, transparent 51%),
+        linear-gradient(-45deg, transparent 49%, #087cff12 50%, transparent 51%);
+    background-size: 100px 100px;
+}
+
+.glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: #006eff;
+    filter: blur(150px);
+    opacity: .15;
+    border-radius: 50%;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Header */
+header {
+    width: 100%;
+    padding: 24px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #168cff22;
+}
+
+.brand {
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #fff;
+}
+
+.brand span {
+    color: #168cff;
+    text-shadow: 0 0 15px #087cff;
+}
+
+.version {
+    color: #00d985;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* Main */
+main {
+    width: 92%;
+    max-width: 650px;
+    margin: 65px auto 30px;
+    text-align: center;
+}
+
+/* PS4 Graphic */
+.console {
+    position: relative;
+    width: 190px;
+    height: 115px;
+    margin: 0 auto 38px;
+    border: 2px solid #087cff;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #071a35, #020814);
+    box-shadow: 0 0 25px #087cff33,
+                inset 0 0 20px #087cff18;
+    transform: perspective(500px) rotateY(-8deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.console::before {
+    content: "PS4";
+    font-size: 43px;
+    font-weight: 900;
+    color: #168cff;
+    text-shadow: 0 0 20px #087cff;
+}
+
+.console::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    width: 90%;
+    height: 5px;
+    border-radius: 50%;
+    background: #168cff;
+    filter: blur(8px);
+}
+
+h1 {
+    font-size: clamp(32px, 8vw, 48px);
+    letter-spacing: 5px;
+    font-weight: 900;
+}
+
+h1 span {
+    color: #168cff;
+    text-shadow: 0 0 20px #087cff77;
+}
+
+.subtitle {
+    color: #7894b8;
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-top: 12px;
+}
+
+.description {
+    margin: 35px 0 13px;
+    color: #9aafcb;
+    font-size: 14px;
+}
+
+/* Firmware */
+.firmware-box {
+    margin: 0 auto;
+    max-width: 350px;
+}
+
+select {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #087cff88;
+    border-radius: 9px;
+    background: #07152a;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    cursor: pointer;
+}
+
+select:focus {
+    border-color: #168cff;
+    box-shadow: 0 0 15px #087cff33;
+}
+
+/* Jailbreak Button */
+.start-button {
+    width: 100%;
+    max-width: 350px;
+    margin: 32px auto 20px;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #00ef83, #00b968);
+    color: #001b0e;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    cursor: pointer;
+    animation: pulse 1.8s infinite;
+    box-shadow: 0 0 20px #00e77c66;
+    transition: .3s;
+}
+
+.start-button:active {
+    transform: scale(.96);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 15px #00e77c55;
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 35px #00e77caa;
+        transform: scale(1.045);
+    }
+}
+
+/* Status */
+.status {
+    color: #00d985;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-top: 12px;
+}
+
+.dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: #00d985;
+    border-radius: 50%;
+    margin-right: 7px;
+    box-shadow: 0 0 10px #00d985;
+}
+
+/* Footer */
+footer {
+    margin-top: 65px;
+    padding: 25px 10px;
+    border-top: 1px solid #168cff22;
+    color: #536b8a;
+    font-size: 11px;
+    letter-spacing: 2px;
+    line-height: 2;
+}
+
+footer span {
+    color: #168cff;
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 20px 5%;
+    }
+
+    .brand {
+        font-size: 19px;
+    }
+
+    main {
+        margin-top: 55px;
+    }
+
+    .console {
+        width: 160px;
+        height: 95px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background">
+    <div class="glow"></div>
+</div>
+
+<header>
+    <div class="brand">PS4<span>NEXUS</span></div>
+    <div class="version">WEBKIT HOST</div>
+</header>
+
+<main>
+
+    <div class="console"></div>
+
+    <h1>PS4<span>NEXUS</span></h1>
+
+    <p class="subtitle">GOLDHEN HOST INTERFACE</p>
+
+    <p class="description">
+        Select your PlayStation 4 firmware
+    </p>
+
+    <div class="firmware-box">
+        <select id="firmware">
+            <option value="9.00">Firmware 9.00</option>
+            <option value="9.03">Firmware 9.03</option>
+            <option value="9.04">Firmware 9.04</option>
+            <option value="9.50">Firmware 9.50</option>
+            <option value="9.60">Firmware 9.60</option>
+            <option value="10.00">Firmware 10.00</option>
+            <option value="10.01">Firmware 10.01</option>
+            <option value="10.50">Firmware 10.50</option>
+            <option value="10.70">Firmware 10.70</option>
+            <option value="10.71">Firmware 10.71</option>
+            <option value="11.00">Firmware 11.00</option>
+            <option value="11.02">Firmware 11.02</option>
+            <option value="11.50">Firmware 11.50</option>
+            <option value="11.52">Firmware 11.52</option>
+            <option value="12.00">Firmware 12.00</option>
+        </select>
+    </div>
+
+    <button class="start-button" onclick="startJailbreak()">
+        START JAILBREAK
+    </button>
+
+    <div class="status" id="status">
+        <span class="dot"></span>SYSTEM READY
+    </div>
+
+</main>
+
+<footer>
+    PS4NEXUS © 2026<br>
+    <span>PLAYSTATION 4 WEBKIT HOST</span><br>
+    Independent Community Project
+</footer>
+
+<script>
+function startJailbreak() {
+    const firmware = document.getElementById("firmware").value;
+
+    document.getElementById("status").innerHTML =
+        "FIRMWARE " + firmware +
+        " SELECTED — EXPLOIT NOT CONFIGURED";
+}
+</script>
+
+</body>
+</html>
